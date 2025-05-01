@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Codepolitan Belajar CSS",
+    "category": "certif",
+    "image": "cert-css-dasar.jpg"
+  },
+  {
+    "title": "Codepolitan Belajar HTML",
+    "category": "certif",
+    "image": "cert-html-dasar.jpg"
+  },
+  {
+    "title": "Codepolitan Belajar Bootstrap",
+    "category": "certif",
+    "image": "cert-bootstrap.jpg"
+  },
+  {
+    "title": "Dicoding Belajar Manajemen Proyek",
+    "category": "certif",
+    "image": "cert-dicoding-manajemen.jpg"
+  },
+  {
+    "title": "Alibaba Cloud Developer",
+    "category": "certif",
+    "image": "cert-alibaba-cloud.png"
+  },
+  {
+    "title": "Informatics Festival And Competition 2024",
+    "category": "awards",
+    "image": "award-informatics-festival.png"
+  },
+  {
+    "title": "Informatics Championship : UI/UX Design Competition",
+    "category": "awards",
+    "image": "award-informatics-championship.png"
+  }
+
+]
