@@ -46,6 +46,22 @@
     ],
     "category": "App Design",
     "tag": ["Figma"]
+  },
+  {
+    "id": 4,
+    "title": "Split TheBill",
+    "description": "Split The Bill is a digital platform that enables users to purchase premium applications at a lower cost through shared subscriptions. Our service connects individuals who are interested in accessing the same digital product—such as Netflix, Spotify, Canva, or productivity tools—by splitting the total subscription fee among multiple users in a secure and transparent way.",
+    "thumbnail": ["splitthebill/splitthebill.png"],
+    "slug": "splitthebill",
+    "repository": "https://github.com/Split-TheBill/SplitThebill",
+    "website": [
+      {
+        "appstore": "",
+        "googleplay": ""
+      }
+    ],
+    "category": "Website",
+    "tag": ["Laravel", "Bootstrap 5"]
   }
 
 ]
