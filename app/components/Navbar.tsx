@@ -1,120 +1,107 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-import { useRouter, usePathname } from "next/navigation";
-import { Navbars } from "../types/portos";
-import { Icon } from "@iconify/react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
-const Navbar: React.FC<Navbars> = ({ data, frontLogo, backLogo, title }) => {
-  const router = useRouter();
+const navigation = [
+  { label: "Work", href: "/#work" },
+  { label: "About", href: "/#about" },
+  { label: "Experience", href: "/#experience" },
+];
+
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const outSideMenu = (e: MouseEvent) => {
-    if (menuRef.current && !menuRef.current?.contains(e.target as Node)) {
-      setIsOpen(false);
-    }
-  };
-
-  const navigateTo = (offsetY: number) => {
-    setTimeout(() => {
-      window.scrollTo({
-        top: offsetY,
-        behavior: "smooth",
-      });
-    }, 500);
-    if (pathname !== "/") {
-      router.push("/");
-    }
-  };
+  useEffect(() => setIsOpen(false), [pathname]);
 
   useEffect(() => {
-    document.addEventListener("mousedown", outSideMenu);
-    return () => {
-      document.removeEventListener("mousedown", outSideMenu);
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
     };
+
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
   }, []);
 
   return (
-    <div className="font-outfit navbar sticky top-0 z-50 w-full bg-gradient-to-b from-[#121212] via-[#121212]/80 to-transparent">
-      <nav className="lg:p-8 p-5">
-        <div className="md:container mx-auto flex justify-between items-center">
-          <div>
-            <div
-              className="flex gap-5 items-center cursor-pointer"
-              onClick={() => router.push("/")}
-            >
-              <div className="head-logos">
-                {/*  flip-image-animations is custom css class see in globals.css */}
-                <div className="flip">
-                  <div className="front">
-                    {frontLogo && (
-                      <Image
-                        className="w-10"
-                        width={50}
-                        height={50}
-                        src={frontLogo}
-                        alt="front logo"
-                      />
-                    )}
-                  </div>
-                  <div className="back">
-                    {backLogo && (
-                      <Image
-                        className="w-10"
-                        width={50}
-                        height={50}
-                        src={backLogo}
-                        alt="back logo"
-                      />
-                    )}
-                  </div>
-                </div>
-              </div>
-              <div className="head-title">
-                <strong className="lg:text-2xl text-lg">{title}</strong>
-              </div>
-            </div>
-          </div>
-          <div
-            ref={menuRef}
-            className={`lg:bg-transparent bg-neutral-800 lg:p-0 p-4 ${
-              isOpen ? "block" : "lg:block hidden"
-            } lg:relative absolute lg:right-0 right-7 lg:top-0 top-16 rounded-lg`}
-          >
-            <ul className="navbar-menu flex lg:flex-row flex-col lg:items-center items-start text-left  gap-3 text-lg">
-              {data &&
-                data.map((item) => (
-                  <li key={item.name}>
-                    <button
-                      className="navbar-item font-outfit"
-                      onClick={() => {
-                        navigateTo(item.offsetY);
-                        setIsOpen(false);
-                      }}
-                    >
-                      {item.name}
-                    </button>
-                  </li>
-                ))}
-            </ul>
-          </div>
-          <button
-            className="text-2xl lg:hidden block p-2 rounded-md bg-neutral-800"
-            onClick={toggleMenu}
-          >
-            <Icon icon="mdi:menu" />
-          </button>
-        </div>
-      </nav>
-    </div>
-  );
-};
+    <header className="sticky top-0 z-50 border-b border-black/15 bg-[#f1efe8]/95 backdrop-blur-md">
+      <nav className="site-shell flex h-[68px] items-center justify-between" aria-label="Main navigation">
+        <Link
+          href="/"
+          className="relative z-10 flex min-h-11 items-center gap-3 font-archiabold text-sm uppercase tracking-[-0.01em]"
+          onClick={() => setIsOpen(false)}
+        >
+          <span className="h-3 w-3 bg-[#ff542e]" aria-hidden="true" />
+          Calvin Haviandy
+        </Link>
 
-export default Navbar;
+        <div className="hidden items-center gap-7 text-xs uppercase tracking-[0.12em] md:flex">
+          {navigation.map((item, index) => (
+            <Link key={item.label} href={item.href} className="group flex min-h-11 items-center gap-2">
+              <span className="font-mono text-[9px] text-black/35">0{index + 1}</span>
+              <span className="transition group-hover:text-[#ff542e]">{item.label}</span>
+            </Link>
+          ))}
+          <a
+            href="mailto:calvinhaviandy@gmail.com"
+            className="ml-2 inline-flex min-h-10 items-center bg-[#151513] px-5 text-[#f4f1e9] transition hover:bg-[#ff542e]"
+          >
+            Say hello ↗
+          </a>
+        </div>
+
+        <button
+          type="button"
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
+          aria-label={isOpen ? "Close navigation" : "Open navigation"}
+          onClick={() => setIsOpen((current) => !current)}
+          className="relative z-10 grid h-11 w-11 place-items-center border border-black/25 md:hidden"
+        >
+          <span className="sr-only">{isOpen ? "Close menu" : "Open menu"}</span>
+          <span className="relative block h-4 w-5" aria-hidden="true">
+            <span
+              className={`absolute left-0 top-1 h-px w-5 bg-current transition-transform ${
+                isOpen ? "translate-y-[3px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`absolute bottom-1 left-0 h-px w-5 bg-current transition-transform ${
+                isOpen ? "-translate-y-[3px] -rotate-45" : ""
+              }`}
+            />
+          </span>
+        </button>
+      </nav>
+
+      <div
+        id="mobile-navigation"
+        className={`absolute inset-x-0 top-full border-b border-black/15 bg-[#f1efe8] px-5 transition duration-200 md:hidden ${
+          isOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"
+        }`}
+      >
+        <div className="mx-auto flex max-w-[1440px] flex-col py-4">
+          {navigation.map((item, index) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              onClick={() => setIsOpen(false)}
+              className="flex min-h-14 items-center justify-between border-b border-black/15 text-lg font-archiabold"
+            >
+              {item.label}
+              <span className="font-mono text-[10px] font-normal text-black/35">0{index + 1}</span>
+            </Link>
+          ))}
+          <a
+            href="mailto:calvinhaviandy@gmail.com"
+            className="mt-5 inline-flex min-h-12 items-center justify-center bg-[#151513] px-5 text-sm text-white"
+          >
+            Say hello ↗
+          </a>
+        </div>
+      </div>
+    </header>
+  );
+}

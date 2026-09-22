@@ -1,67 +1,138 @@
 [
   {
-    "id": 1,
-    "title": "Melody Tix",
-    "description": "MelodyTix is an innovative platform developed by Group 5, designed to deliver unforgettable experiences for music and concert enthusiasts. With MelodyTix, you can easily explore and purchase tickets for concerts across Indonesia, all in one seamless and user-friendly platform. Our mission is to connect music lovers with their favorite artists, and make it easier than ever to discover new events and venues. Whether you’re a seasoned concert-goer or a first-time attendee, MelodyTix has everything you need to find, book, and enjoy live music experiences.",
-    "thumbnail": ["melodytix/melodytix.png"],
-    "slug": "melodytix",
-    "repository": "https://github.com/calvinhaviandy/MelodyTix",
-    "website": [
-      {
-        "appstore": "",
-        "googleplay": ""
-      }
-    ],
-    "category": "Website",
-    "tag": ["PHP", "Bootstrap 5"]
-  },
-  {
     "id": 2,
-    "title": "Stream Flix",
-    "description": "Streamflix is a streaming platform that focuses on independent films, particularly from Indonesia. This application was developed as part of a group project for our E-Business course, which required us to create a money-generating application. Streamflix allows users to watch a variety of films, ranging from drama to horror, and provides a platform for filmmakers to showcase their work. Our goal is to support local talent and provide a space for unique, diverse storytelling. With Streamflix, you can discover new films, support emerging filmmakers, and enjoy a cinematic experience from the comfort of your home.",
-    "thumbnail": ["streamflix/streamflix-photo.png"],
-    "slug": "streamflix",
-    "repository": "https://www.figma.com/design/fZbxbH3iBMpq9Rkj0mH2qi/StreamFlix?node-id=0-1&t=zbhfUnHA36igBF05-1",
-    "website": [
-      {
-        "appstore": "",
-        "googleplay": ""
-      }
-    ],
-    "category": "App Design",
-    "tag": ["Figma"]
+    "title": "Vallerieon",
+    "slug": "vallerieon",
+    "summary": "A personal media gallery with a complete publishing workflow.",
+    "description": "A gallery for photos, videos, and music with a public experience and a separate admin panel. The project includes uploads, content editing, serverless API routes, and cloud storage through Vercel Blob.",
+    "cover": "",
+    "gallery": [],
+    "repository": "https://github.com/calvinhaviandy/vallerieon",
+    "website": "https://vallerieon.vercel.app",
+    "category": "Full-stack gallery",
+    "year": "2026",
+    "role": "Design & development",
+    "tag": ["JavaScript", "Vercel Blob", "Serverless"],
+    "featured": true,
+    "tone": "rose"
   },
   {
     "id": 3,
-    "title": "Gizitron",
-    "description": "Gizitron is an innovative calorie measurement app powered by AI technology. Designed to help users track their calorie intake accurately, the app leverages advanced algorithms to analyze food data and provide personalized recommendations. Whether you're aiming for weight loss, maintenance, or muscle gain, Gizitron offers an easy-to-use interface and smart insights to support your health and nutrition goals.",
-    "thumbnail": ["gizitron/gizitrons.png"],
-    "slug": "gizitron",
-    "repository": "https://www.figma.com/design/PPu8aczpqGHgnKuPKTgnn5/GIZITRONN?node-id=0-1&t=ARkTLzQ0ijWoBElF-1",
-    "website": [
-      {
-        "appstore": "",
-        "googleplay": ""
-      }
-    ],
-    "category": "App Design",
-    "tag": ["Figma"]
+    "title": "Nutrimind",
+    "slug": "nutrimind",
+    "summary": "An AI-assisted meal generator built around nutrition data.",
+    "description": "A Flask application that combines food and nutrition data with AI-assisted meal generation. It explores a practical use of language and vision models rather than adding a chatbot to an otherwise ordinary interface.",
+    "cover": "",
+    "gallery": [],
+    "repository": "https://github.com/calvinhaviandy/nutrimind",
+    "website": "",
+    "category": "AI meal planner",
+    "year": "2025",
+    "role": "Development",
+    "tag": ["Python", "Flask", "AI"],
+    "featured": true,
+    "tone": "lime"
   },
   {
     "id": 4,
+    "title": "Kopi Malas",
+    "slug": "kopi-malas",
+    "summary": "A scroll-led company profile for a local coffee brand.",
+    "description": "A compact brand site for Kopi Malas. The build uses deliberate motion, smooth scrolling, and a simple product narrative to give a small business a more memorable web presence.",
+    "cover": "",
+    "gallery": [],
+    "repository": "https://github.com/calvinhaviandy/Kopi-Malas",
+    "website": "",
+    "category": "Brand website",
+    "year": "2025",
+    "role": "Design & development",
+    "tag": ["Vite", "Tailwind CSS", "GSAP"],
+    "featured": true,
+    "tone": "coffee"
+  },
+  {
+    "id": 5,
+    "title": "QR Attendance",
+    "slug": "qr-attendance",
+    "summary": "A browser-based attendance flow using QR codes and Firebase.",
+    "description": "A React prototype for creating, scanning, and recording attendance through QR codes. Firebase handles the data layer while the interface is optimized for the short, repeatable flow of checking in.",
+    "cover": "",
+    "gallery": [],
+    "repository": "https://github.com/calvinhaviandy/absensicobacoba",
+    "website": "https://absensicobacoba.vercel.app",
+    "category": "Web application",
+    "year": "2025",
+    "role": "Development",
+    "tag": ["React", "Firebase", "Vite"],
+    "featured": false,
+    "tone": "blue"
+  },
+  {
+    "id": 6,
     "title": "Split TheBill",
-    "description": "Split The Bill is a digital platform that enables users to purchase premium applications at a lower cost through shared subscriptions. Our service connects individuals who are interested in accessing the same digital product—such as Netflix, Spotify, Canva, or productivity tools—by splitting the total subscription fee among multiple users in a secure and transparent way.",
-    "thumbnail": ["splitthebill/splitthebill.png"],
     "slug": "splitthebill",
+    "summary": "A shared-subscription platform built as a team project.",
+    "description": "A platform for coordinating shared digital subscriptions and splitting their cost across members. I worked with the team on the Laravel application and its Bootstrap-based interface.",
+    "cover": "splitthebill/splitthebill.png",
+    "gallery": [],
     "repository": "https://github.com/Split-TheBill/SplitThebill",
-    "website": [
-      {
-        "appstore": "",
-        "googleplay": ""
-      }
-    ],
-    "category": "Website",
-    "tag": ["Laravel", "Bootstrap 5"]
+    "website": "",
+    "category": "Team web project",
+    "year": "2025",
+    "role": "Development",
+    "tag": ["Laravel", "Blade", "Bootstrap"],
+    "featured": false,
+    "tone": "violet"
+  },
+  {
+    "id": 7,
+    "title": "MelodyTix",
+    "slug": "melodytix",
+    "summary": "A concert discovery and ticketing prototype.",
+    "description": "A group-built web application for browsing concerts and purchasing tickets. The project covers the complete ticketing flow, from event discovery to order management, in a PHP application.",
+    "cover": "melodytix/melodytix.png",
+    "gallery": [],
+    "repository": "https://github.com/calvinhaviandy/MelodyTix",
+    "website": "",
+    "category": "Team web project",
+    "year": "2024",
+    "role": "Development",
+    "tag": ["PHP", "Bootstrap", "MySQL"],
+    "featured": false,
+    "tone": "yellow"
+  },
+  {
+    "id": 8,
+    "title": "StreamFlix",
+    "slug": "streamflix",
+    "summary": "A streaming product concept focused on independent films.",
+    "description": "A product design concept for an Indonesian independent-film platform. The interface gives local filmmakers a place to publish their work while keeping discovery and watching familiar for the audience.",
+    "cover": "streamflix/streamflix-photo.png",
+    "gallery": [],
+    "repository": "https://www.figma.com/design/fZbxbH3iBMpq9Rkj0mH2qi/StreamFlix?node-id=0-1&t=zbhfUnHA36igBF05-1",
+    "website": "",
+    "category": "Product design",
+    "year": "2024",
+    "role": "UI/UX design",
+    "tag": ["Figma", "Prototyping"],
+    "featured": false,
+    "tone": "red"
+  },
+  {
+    "id": 9,
+    "title": "Gizitron",
+    "slug": "gizitron",
+    "summary": "A nutrition-tracking mobile product concept.",
+    "description": "A mobile interface concept for estimating calories, logging meals, and turning food data into useful daily guidance. The work focused on making dense nutrition information quick to read.",
+    "cover": "gizitron/gizitrons.png",
+    "gallery": [],
+    "repository": "https://www.figma.com/design/PPu8aczpqGHgnKuPKTgnn5/GIZITRONN?node-id=0-1&t=ARkTLzQ0ijWoBElF-1",
+    "website": "",
+    "category": "Product design",
+    "year": "2024",
+    "role": "UI/UX design",
+    "tag": ["Figma", "Mobile UI"],
+    "featured": false,
+    "tone": "green"
   }
-
 ]

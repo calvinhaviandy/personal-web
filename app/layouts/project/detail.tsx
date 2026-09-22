@@ -1,211 +1,135 @@
-"use client";
-
-import React, { useRef, useEffect, useState, use } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
-import Head from "next/head";
-
-import "swiper/css";
-import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { Projects, Tags } from "@/app/types/portos";
-import fetch from "@/app/utils/axios";
+import { notFound } from "next/navigation";
+import ProjectVisual from "@/app/components/ProjectVisual";
+import projects from "@/public/api/project.json";
 
-export default function detail({ slug }: { slug: string }) {
-  const [data, setData] = useState<Projects>();
-  const prevSlide = useRef(null);
-  const nextSlide = useRef(null);
+export default function ProjectDetail({ slug }: { slug: string }) {
+  const projectIndex = projects.findIndex((item) => item.slug === slug);
+  const project = projects[projectIndex];
 
-  const getDetailProject = async ({ slug }: { slug: string }) => {
-    try {
-      const response = await fetch.get("project.json");
+  if (!project) notFound();
 
-      const filteredData = response.data.find(
-        (item: any) => item.slug === slug
-      );
-
-      setData(filteredData);
-    } catch (error) {
-      console.error("Error fetching project:", error);
-      return null;
-    }
-  };
-
-  useEffect(() => {
-    getDetailProject({ slug: slug });
-  });
+  const nextProject = projects[(projectIndex + 1) % projects.length];
+  const repositoryLabel = project.repository.includes("figma.com")
+    ? "Open Figma file"
+    : "View source";
 
   return (
-    <>
-      {data && (
-        <Head>
-          <title>{data.title} . Calvin Valeon Haviandy</title>
-          <meta
-            name="description"
-            content={data.description}
-          />
-          <meta
-            name="robots"
-            content="index, follow"
-          />
-          <meta
-            property="og:title"
-            content={`${data.title} . Calvin Valeon Haviandy`}
-          />
-          <meta
-            property="og:description"
-            content={data.description}
-          />
-          <meta
-            property="og:type"
-            content="website"
-          />
-        </Head>
-      )}
-      <div className="space-y-8 pb-16 pt-10 container mx-auto">
-        <div className="max-w-7xl mx-auto font-outfit">
-          <Link
-            href={`/`}
-            className=" flex gap-2 items-center"
-          >
-            <Icon icon="ion:arrow-back" /> <span>Back to home </span>
-          </Link>
-        </div>
-        <div className="relative  ">
-          <div className="mt-8 relative">
-            {data && data.thumbnail.length > 1 ? (
-              <button
-                ref={nextSlide}
-                className="px-4 py-4 bg-neutral-800 rounded-full font-outfit absolute  lg:right-0 -right-5  lg:top-80 top-24 text-2xl z-20"
-              >
-                <span>
-                  <Icon icon="lucide:arrow-right" />
-                </span>
-              </button>
-            ) : null}
-            {data && data.thumbnail.length > 1 ? (
-              <button
-                ref={prevSlide}
-                className="px-4 py-4 bg-neutral-800 rounded-full font-outfit absolute lg:left-0 -left-5  lg:top-80 top-24 text-2xl z-20"
-              >
-                <span>
-                  <Icon icon="lucide:arrow-left" />
-                </span>
-              </button>
-            ) : null}
-          </div>
-          <Swiper
-            modules={[Navigation]}
-            navigation={{
-              prevEl: prevSlide.current,
-              nextEl: nextSlide.current,
-            }}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
-            slidesPerView={1}
-          >
-            {data && data.thumbnail.length > 0 ? (
-              data.thumbnail.map((item: string, i: number) => (
-                <SwiperSlide key={i}>
-                  <img
-                    src={"/image/project/" + item}
-                    className="w-full max-w-7xl mx-auto rounded-md"
-                  />
-                </SwiperSlide>
-              ))
-            ) : (
-              <SwiperSlide>
-                <div className="w-full max-w-7xl mx-auto border-2 border-dashed border-col-secondary-font p-5">
-                  No Image Showed
-                </div>
-              </SwiperSlide>
-            )}
-          </Swiper>
-        </div>
+    <main>
+      <section className="site-shell pb-12 pt-8 sm:pb-16 sm:pt-12">
+        <Link href="/project" className="text-link">
+          <span aria-hidden="true">←</span> All projects
+        </Link>
 
-        <div className="max-w-7xl mx-auto space-y-5">
-          <div className="flex lg:flex-row flex-col justify-between gap-5">
-            <h2 className="text-4xl  font-archiabold tracking-tighter">
-              {data?.title}
-            </h2>
-            <div className="flex  gap-5">
-              {data && data.website && data.website.length > 0 ? (
-                data.website.map((item: any, i: number) => (
-                  <React.Fragment key={i}>
-                    {item.appstore && (
-                      <Link
-                        key={`appstore-${i}`}
-                        href={item.appstore}
-                        target="_blank"
-                        className="px-5 lg:text-base text-sm font-outfit py-2 flex gap-2 items-center bg-neutral-700 rounded-md text-white"
-                      >
-                        <Icon
-                          icon="mdi:apple"
-                          className="text-lg"
-                        />
-                        <span>App Store</span>
-                      </Link>
-                    )}
-                    {item.googleplay && (
-                      <Link
-                        key={`googleplay-${i}`}
-                        href={item.googleplay}
-                        target="_blank"
-                        className="px-5 lg:text-base text-sm font-outfit py-2 flex gap-2 items-center bg-neutral-700 rounded-md text-white"
-                      >
-                        <Icon
-                          icon="mdi:google-play"
-                          className="text-lg"
-                        />
-                        <span>Google Play</span>
-                      </Link>
-                    )}
-                  </React.Fragment>
-                ))
-              ) : (
-                <span className="text-center font-outfit px-3 py-1 bg-neutral-800 rounded-md">
-                  No techonlogy used
-                </span>
-              )}
-              {data && data.repository && (
+        <div className="mt-14 grid gap-10 border-b border-black/20 pb-10 sm:mt-20 sm:pb-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+          <div className="min-w-0">
+            <p className="eyebrow">
+              Project {String(projectIndex + 1).padStart(2, "0")} / {project.year}
+            </p>
+            <h1 className="mt-5 break-words text-[clamp(3.4rem,11vw,9rem)] font-archiabold leading-[0.82] tracking-[-0.075em]">
+              {project.title.toUpperCase()}.
+            </h1>
+          </div>
+
+          <div>
+            <p className="max-w-xl text-xl font-archiabold leading-[1.25] tracking-[-0.025em] sm:text-2xl">
+              {project.summary}
+            </p>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              {project.website && (
                 <Link
-                  href={data.repository}
+                  href={project.website}
                   target="_blank"
-                  className="px-5 lg:text-base text-sm font-outfit py-2 flex gap-2 items-center bg-neutral-700 rounded-md text-white"
+                  rel="noreferrer"
+                  className="button-dark"
                 >
-                  Repository
-                  <span>
-                    {" "}
-                    <Icon icon="mdi:github" />
-                  </span>
+                  Visit live site ↗
                 </Link>
               )}
+              <Link
+                href={project.repository}
+                target="_blank"
+                rel="noreferrer"
+                className="button-line"
+              >
+                {repositoryLabel} ↗
+              </Link>
             </div>
           </div>
+        </div>
+      </section>
 
-          <p className="font-outfit text-lg text-col-secondary-font ">
-            {data?.description}
-          </p>
-          <div className="flex gap-2">
-            {data && data.tag.length > 0 ? (
-              data.tag.map((item: string, i: number) => (
-                <span
-                  key={i}
-                  className="text-center font-outfit px-3 py-1 bg-neutral-800 rounded-md"
-                >
-                  {item}
-                </span>
-              ))
-            ) : (
-              <span className="text-center font-outfit px-3 py-1 bg-neutral-800 rounded-md">
-                No techonlogy used
-              </span>
-            )}
+      <section className="site-shell">
+        <ProjectVisual
+          title={project.title}
+          category={project.category}
+          year={project.year}
+          tone={project.tone}
+          cover={project.cover}
+          priority
+        />
+      </section>
+
+      <section className="site-shell section-space">
+        <div className="grid gap-12 lg:grid-cols-[0.55fr_1.45fr] lg:gap-20">
+          <div>
+            <p className="eyebrow">Project notes</p>
+            <dl className="mt-8 border-t border-black/20 text-sm">
+              <div className="border-b border-black/20 py-5">
+                <dt className="font-mono text-[10px] uppercase tracking-[0.12em] text-black/35">
+                  Role
+                </dt>
+                <dd className="mt-2">{project.role}</dd>
+              </div>
+              <div className="border-b border-black/20 py-5">
+                <dt className="font-mono text-[10px] uppercase tracking-[0.12em] text-black/35">
+                  Type
+                </dt>
+                <dd className="mt-2">{project.category}</dd>
+              </div>
+              <div className="border-b border-black/20 py-5">
+                <dt className="font-mono text-[10px] uppercase tracking-[0.12em] text-black/35">
+                  Built with
+                </dt>
+                <dd className="mt-2 leading-6">{project.tag.join(" / ")}</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div>
+            <p className="max-w-4xl text-3xl font-archiabold leading-[1.15] tracking-[-0.04em] sm:text-5xl">
+              {project.description}
+            </p>
           </div>
         </div>
-      </div>
-    </>
+      </section>
+
+      {project.gallery.length > 0 && (
+        <section className="site-shell grid gap-5 pb-20 sm:pb-28 md:grid-cols-2">
+          {project.gallery.map((image) => (
+            <img
+              key={image}
+              src={`/image/project/${image}`}
+              alt={`${project.title} interface`}
+              className="h-auto w-full border border-black/10 bg-white"
+            />
+          ))}
+        </section>
+      )}
+
+      <section className="bg-[#121210] text-[#f2f0e9]">
+        <Link href={`/project/${nextProject.slug}`} className="site-shell group block py-20 sm:py-28">
+          <p className="eyebrow text-white/40">Next project</p>
+          <div className="mt-5 flex min-w-0 items-end justify-between gap-5">
+            <h2 className="min-w-0 break-words text-5xl font-archiabold leading-[0.9] tracking-[-0.055em] sm:text-7xl lg:text-8xl">
+              {nextProject.title}
+            </h2>
+            <span className="shrink-0 text-3xl text-[#ff542e] transition group-hover:translate-x-2">
+              →
+            </span>
+          </div>
+        </Link>
+      </section>
+    </main>
   );
 }
