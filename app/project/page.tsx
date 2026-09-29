@@ -1,4 +1,5 @@
-import Project from "@/app/layouts/project";
-export default function page() {
-  return <Project />;
+import ProjectIndex from "@/app/layouts/project";
+
+export default function ProjectsPage() {
+  return <ProjectIndex />;
 }

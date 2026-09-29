@@ -3,17 +3,18 @@ import projects from "@/public/api/project.json";
 import type { Metadata } from "next";
 
 interface Params {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
 }
 
-export function generateMetadata({ params }: Params): Metadata {
-  const project = projects.find((item) => item.slug === params.slug);
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((item) => item.slug === slug);
 
   return {
     title: project?.title ?? "Project",
@@ -21,6 +22,7 @@ export function generateMetadata({ params }: Params): Metadata {
   };
 }
 
-export default function ProjectPage({ params }: Params) {
-  return <ProjectDetail slug={params.slug} />;
+export default async function ProjectPage({ params }: Params) {
+  const { slug } = await params;
+  return <ProjectDetail slug={slug} />;
 }

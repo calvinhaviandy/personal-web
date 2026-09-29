@@ -21,10 +21,11 @@ export const metadata: Metadata = {
     template: "%s — Calvin Haviandy",
   },
   description:
-    "Selected web development and product design work by Calvin Haviandy, based in Indonesia.",
+    "Calvin Haviandy designs and builds websites, tools, and digital products. Explore selected work and connect.",
+  icons: { icon: "/icon.svg" },
   openGraph: {
     title: "Calvin Haviandy — Developer & Designer",
-    description: "Selected web development and product design work by Calvin Haviandy.",
+    description: "Websites, tools, and digital products by Calvin Haviandy.",
     url: "/",
     siteName: "Calvin Haviandy",
     locale: "en_US",
@@ -35,13 +36,17 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#f1efe8",
+  themeColor: "#000000",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${outfit.variable} ${archiaBold.variable} font-outfit`}>
+    <html lang="en" data-scroll-behavior="smooth">
+      <body className={`${outfit.variable} ${archiaBold.variable}`}>
+        <div className="space-backdrop" aria-hidden="true">
+          <span className="shooting-star shooting-star-one" />
+          <span className="shooting-star shooting-star-two" />
+        </div>
         <Navbar />
         {children}
         <Footer />
