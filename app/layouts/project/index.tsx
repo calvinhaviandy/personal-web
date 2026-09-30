@@ -12,14 +12,21 @@ export default function ProjectIndex() {
 
         <div className="archive-list">
           {projects.map((project, index) => (
-            <Link href={`/project/${project.slug}`} className="archive-item" key={project.slug}>
-              <span className="archive-item-index">{String(index + 1).padStart(2, "0")}</span>
-              <span className="archive-item-copy">
-                <strong>{project.title}</strong>
-                <span>{project.summary}</span>
-              </span>
-              <span className="archive-item-arrow" aria-hidden="true">↗</span>
-            </Link>
+            <article className="archive-project" key={project.slug}>
+              <Link href={`/project/${project.slug}`} className="archive-item">
+                <span className="archive-item-index">{String(index + 1).padStart(2, "0")}</span>
+                <span className="archive-item-copy">
+                  <strong>{project.title}</strong>
+                  <span>{project.summary}</span>
+                </span>
+                <span className="archive-item-arrow" aria-hidden="true">↗</span>
+              </Link>
+              {project.website && (
+                <a href={project.website} target="_blank" rel="noreferrer" className="archive-live-link">
+                  Visit live site <span aria-hidden="true">↗</span>
+                </a>
+              )}
+            </article>
           ))}
         </div>
 

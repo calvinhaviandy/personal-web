@@ -536,7 +536,8 @@ svg {
 .archive-heading { margin: 51px 0 0; font-family: var(--font-archia-bold), Arial, sans-serif; font-size: clamp(52px, 10vw, 88px); letter-spacing: -0.08em; line-height: .92; }
 .archive-intro { max-width: 560px; margin: 20px 0 0; color: var(--muted); font-size: 16px; line-height: 1.6; }
 .archive-list { display: grid; margin-top: 54px; gap: 10px; }
-.archive-item { display: grid; min-height: 100px; padding: 18px 22px; grid-template-columns: 38px minmax(0,1fr) auto; align-items: center; gap: 12px; border: 1px solid var(--line); background: var(--black); transition: background 180ms ease, color 180ms ease; }
+.archive-project { border: 1px solid var(--line); background: var(--black); }
+.archive-item { display: grid; min-height: 100px; padding: 18px 22px; grid-template-columns: 38px minmax(0,1fr) auto; align-items: center; gap: 12px; transition: background 180ms ease, color 180ms ease; }
 .archive-item:hover, .archive-item:focus-visible { background: var(--white); color: var(--black); }
 .archive-item-index { align-self: start; padding-top: 8px; color: var(--faint); font: 10px ui-monospace, SFMono-Regular, Consolas, monospace; }
 .archive-item-copy { display: flex; min-width: 0; flex-direction: column; gap: 6px; }
@@ -545,6 +546,8 @@ svg {
 .archive-item-arrow { font-size: 23px; }
 .archive-item:hover .archive-item-index, .archive-item:focus-visible .archive-item-index { color: rgba(0,0,0,.55); }
 .archive-item:hover .archive-item-copy > span, .archive-item:focus-visible .archive-item-copy > span { color: rgba(0,0,0,.7); }
+.archive-live-link { display: flex; min-height: 42px; padding: 9px 22px 10px 72px; align-items: center; gap: 6px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+.archive-live-link:hover { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
 .archive-end { margin-top: 34px; padding-top: 21px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; line-height: 1.6; }
 .archive-end a { color: var(--white); text-decoration: underline; text-underline-offset: 4px; }
 
