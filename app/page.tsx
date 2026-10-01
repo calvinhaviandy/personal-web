@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Icon from "@/app/components/Icon";
 import ExperienceList from "@/app/components/ExperienceList";
 import SelectedWork from "@/app/components/SelectedWork";
 import experiences from "@/public/api/experience.json";
@@ -37,14 +38,14 @@ export default function HomePage() {
           </div>
         </div>
 
-        <p className="hero-kicker"><span className="small-star" aria-hidden="true">✦</span> FULL-STACK DEVELOPER & DESIGNER</p>
+        <p className="hero-kicker"><span className="small-star" aria-hidden="true"><Icon name="sparkle" /></span> FULL-STACK DEVELOPER & DESIGNER</p>
         <h1 id="hero-title">Calvin<br /><span>Haviandy.</span></h1>
         <p className="hero-intro">I turn rough ideas into websites people can use. I design the screen, write the code, and care about how it feels.</p>
         <div className="availability"><span className="availability-dot" aria-hidden="true" /> AVAILABLE FOR SELECTED WORK</div>
       </section>
 
       <section id="links" className="content-section links-section" aria-labelledby="links-title">
-        <div className="section-label"><span>01 / FIND ME</span><span>CHOOSE A DIRECTION ↓</span></div>
+        <div className="section-label"><span>01 / FIND ME</span><span>CHOOSE A DIRECTION <Icon name="arrow-down" /></span></div>
         <h2 id="links-title" className="visually-hidden">Explore and connect</h2>
         <div className="link-stack">
           {primaryLinks.map((item, index) => (
@@ -57,7 +58,7 @@ export default function HomePage() {
             >
               <span className="link-card-index">{String(index + 1).padStart(2, "0")}</span>
               <span className="link-card-copy"><strong>{item.label}</strong><span>{item.detail}</span></span>
-              <span className="link-card-arrow" aria-hidden="true">↗</span>
+              <span className="link-card-arrow" aria-hidden="true"><Icon name="arrow-up-right" /></span>
             </Link>
           ))}
         </div>
@@ -84,11 +85,11 @@ export default function HomePage() {
       </section>
 
       <section id="contact" className="content-section contact-section" aria-labelledby="contact-title">
-        <span className="contact-star" aria-hidden="true">✳</span>
+        <span className="contact-star" aria-hidden="true"><Icon name="asterisk" /></span>
         <p className="micro-label">05 / NEXT CONNECTION</p>
         <h2 id="contact-title">Have an idea<br />worth building?</h2>
         <p>Send me the rough version. We can figure out the rest together.</p>
-        <a href="mailto:calvinhaviandy@gmail.com" className="contact-link">Let&apos;s talk <span aria-hidden="true">↗</span></a>
+        <a href="mailto:calvinhaviandy@gmail.com" className="contact-link">Let&apos;s talk <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a>
         <a href="mailto:calvinhaviandy@gmail.com" className="contact-email">calvinhaviandy@gmail.com</a>
       </section>
     </main>

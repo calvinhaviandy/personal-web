@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import Icon from "./Icon";
 import styles from "./ProjectVisual.module.css";
 
 type ProjectVisualProps = {
@@ -50,7 +51,7 @@ export default function ProjectVisual({ slug, title, category, year, cover }: Pr
             <div className={styles.browserBar}>
               <span className={styles.browserDots}><i /><i /><i /></span>
               <span className={styles.browserAddress}>{capture.address}</span>
-              <span className={styles.browserIcon}>↗</span>
+              <span className={styles.browserIcon}><Icon name="arrow-up-right" /></span>
             </div>
             <div className={styles.browserViewport}>
               <Image src={`/image/project/${capture.image}`} alt="" fill sizes="(max-width: 620px) calc(100vw - 80px), 700px" className={styles.captureImage} />

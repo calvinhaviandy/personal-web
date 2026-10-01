@@ -1,3 +1,5 @@
+import Icon from "./Icon";
+
 type ExperienceItem = {
   name: string;
   time: string;
@@ -18,7 +20,7 @@ export default function ExperienceList({ items }: { items: ExperienceItem[] }) {
               <span>{experience.name}</span>
             </span>
             <span className="experience-time">{experience.time}</span>
-            <span className="experience-plus" aria-hidden="true">+</span>
+            <span className="experience-plus" aria-hidden="true"><Icon name="plus" /></span>
           </summary>
           <p>{experience.description}</p>
         </details>

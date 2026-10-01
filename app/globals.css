@@ -164,6 +164,27 @@ svg {
   max-width: 100%;
 }
 
+.ui-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.brand-symbol,
+.small-star,
+.link-card-arrow,
+.work-card-arrow,
+.experience-plus,
+.contact-star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -202,7 +223,6 @@ svg {
 }
 
 .brand-symbol {
-  font-family: Arial, sans-serif;
   font-size: 23px;
   line-height: 1;
 }
@@ -493,7 +513,7 @@ svg {
 .experience-identity { display: flex; min-width: 0; flex-direction: column; gap: 4px; }
 .experience-identity strong { font-family: var(--font-archia-bold), Arial, sans-serif; font-size: 18px; font-weight: 700; line-height: 1.2; }
 .experience-identity > span { color: var(--muted); font-size: 13px; }
-.experience-plus { font-size: 24px; font-weight: 300; line-height: 1; transition: transform 180ms ease; }
+.experience-plus { font-size: 18px; transition: transform 180ms ease; }
 .experience-item[open] .experience-plus { transform: rotate(45deg); }
 .experience-item > p { max-width: 650px; margin: 0 0 24px 50px; color: var(--muted); font-size: 14px; line-height: 1.6; }
 
@@ -574,7 +594,7 @@ svg {
   .work-card-external { padding-inline: 18px; }
   .experience-item summary { grid-template-columns: 26px minmax(0,1fr) 16px; gap: 8px; }
   .experience-time { grid-column: 2; grid-row: 2; }
-  .experience-plus { grid-column: 3; grid-row: 1; }
+  .experience-plus { grid-column: 3; grid-row: 1; font-size: 16px; }
   .experience-item > p { margin-left: 34px; }
   .site-footer-inner { padding: 24px 0; flex-direction: column; align-items: flex-start; }
   .archive-content { padding-top: 40px; }

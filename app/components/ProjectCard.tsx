@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Icon from "./Icon";
 import ProjectVisual from "./ProjectVisual";
 
 type Project = {
@@ -29,13 +30,13 @@ export default function ProjectCard({ project, index, headingLevel = "h3" }: {
           <div className="work-card-heading">
             <span className="work-card-index">{String(index + 1).padStart(2, "0")}</span>
             <Heading>{project.title}</Heading>
-            <span className="work-card-arrow" aria-hidden="true">↗</span>
+            <span className="work-card-arrow" aria-hidden="true"><Icon name="arrow-up-right" /></span>
           </div>
           <p>{project.summary}</p>
           <p className="work-card-meta">{project.category} / {project.year}</p>
         </div>
       </Link>
-      <a href={externalUrl} target="_blank" rel="noreferrer" className="work-card-external" aria-label={`${externalLabel} — ${project.title}`}>{externalLabel}<span aria-hidden="true">↗</span></a>
+      <a href={externalUrl} target="_blank" rel="noreferrer" className="work-card-external" aria-label={`${externalLabel} — ${project.title}`}>{externalLabel}<span aria-hidden="true"><Icon name="arrow-up-right" /></span></a>
     </article>
   );
 }

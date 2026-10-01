@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Icon from "./Icon";
 import ProjectCard from "./ProjectCard";
 import projects from "@/public/api/project.json";
 
@@ -16,7 +17,7 @@ export default function SelectedWork() {
       </div>
 
       <Link href="/project" className="archive-link">
-        <span>View all {projects.length} projects</span><span aria-hidden="true">↗</span>
+        <span>View all {projects.length} projects</span><span aria-hidden="true"><Icon name="arrow-up-right" /></span>
       </Link>
     </section>
   );

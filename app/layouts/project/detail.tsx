@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import Icon from "@/app/components/Icon";
 import ProjectVisual from "@/app/components/ProjectVisual";
 import projects from "@/public/api/project.json";
 
@@ -16,16 +17,16 @@ export default function ProjectDetail({ slug }: { slug: string }) {
   return (
     <main className="detail-page" id="top">
       <div className="detail-content">
-        <Link href="/project" className="back-link"><span aria-hidden="true">←</span> All projects</Link>
+        <Link href="/project" className="back-link"><Icon name="arrow-left" /> All projects</Link>
         <p className="project-detail-label">PROJECT {String(projectIndex + 1).padStart(2, "0")} / {project.year}</p>
         <h1 className="detail-heading">{project.title}<span className="title-period">.</span></h1>
         <p className="detail-summary">{project.summary}</p>
 
         <div className="detail-actions">
           {project.website && (
-            <Link href={project.website} target="_blank" rel="noreferrer" className="detail-action primary">Visit live site <span aria-hidden="true">↗</span></Link>
+            <Link href={project.website} target="_blank" rel="noreferrer" className="detail-action primary">Visit live site <span aria-hidden="true"><Icon name="arrow-up-right" /></span></Link>
           )}
-          <Link href={project.repository} target="_blank" rel="noreferrer" className={`detail-action${project.website ? "" : " primary"}`}>{sourceLabel} <span aria-hidden="true">↗</span></Link>
+          <Link href={project.repository} target="_blank" rel="noreferrer" className={`detail-action${project.website ? "" : " primary"}`}>{sourceLabel} <span aria-hidden="true"><Icon name="arrow-up-right" /></span></Link>
         </div>
 
         <div className="detail-visual-wrap">
@@ -53,7 +54,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
 
       <Link href={`/project/${nextProject.slug}`} className="next-project">
         <span><small>Next project</small><strong>{nextProject.title}</strong></span>
-        <span aria-hidden="true">↗</span>
+        <span aria-hidden="true"><Icon name="arrow-up-right" /></span>
       </Link>
     </main>
   );
