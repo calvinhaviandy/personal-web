@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ProjectCard from "./ProjectCard";
 import projects from "@/public/api/project.json";
 
 const featuredProjects = projects.filter((project) => project.featured);
@@ -11,24 +12,7 @@ export default function SelectedWork() {
       <p className="section-intro">A few projects from code, design, and everything in between.</p>
 
       <div className="project-list">
-        {featuredProjects.map((project, index) => (
-          <article className="project-row" key={project.slug}>
-            <Link href={`/project/${project.slug}`} className="project-row-main">
-              <span className="row-index">{String(index + 1).padStart(2, "0")}</span>
-              <span className="project-row-copy">
-                <span className="project-row-title">{project.title}</span>
-                <span className="project-row-summary">{project.summary}</span>
-                <span className="project-row-meta">{project.category} <span aria-hidden="true">/</span> {project.year}</span>
-              </span>
-              <span className="row-arrow" aria-hidden="true">↗</span>
-            </Link>
-            {project.website && (
-              <Link href={project.website} target="_blank" rel="noreferrer" className="project-live-link">
-                Visit live site <span aria-hidden="true">↗</span>
-              </Link>
-            )}
-          </article>
-        ))}
+        {featuredProjects.map((project, index) => <ProjectCard project={project} index={index} key={project.slug} />)}
       </div>
 
       <Link href="/project" className="archive-link">

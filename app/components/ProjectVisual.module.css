@@ -1,0 +1,417 @@
+.visual {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  background: #000;
+  container-type: inline-size;
+}
+
+.artwork {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #111;
+}
+
+.artwork img {
+  filter: grayscale(1);
+}
+
+.browser {
+  position: absolute;
+  inset: 6.5% 5.5%;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: clamp(4px, 1cqw, 8px);
+  background: #f5f5f5;
+  box-shadow: 0 2.4cqw 5cqw rgba(0, 0, 0, 0.3);
+  transition: transform 220ms ease;
+}
+
+.browserBar {
+  display: flex;
+  height: 4.3cqw;
+  min-height: 17px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3cqw;
+  padding-inline: 2.3cqw;
+  border-bottom: 1px solid #d7d7d7;
+  color: #555;
+  background: #ebebeb;
+}
+
+.browserDots {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.65cqw;
+}
+
+.browserDots i {
+  width: clamp(3px, 0.7cqw, 5px);
+  height: clamp(3px, 0.7cqw, 5px);
+  border: 1px solid #a4a4a4;
+  border-radius: 50%;
+}
+
+.browserAddress {
+  min-width: 0;
+  overflow: hidden;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: clamp(7px, 1.4cqw, 10px);
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.browserIcon {
+  flex-shrink: 0;
+  font-size: clamp(9px, 1.8cqw, 14px);
+  line-height: 1;
+}
+
+.browserViewport {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  flex: 1;
+  background: #fff;
+}
+
+.captureImage {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.caption {
+  display: flex;
+  min-height: 30px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 4cqw;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.64);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: clamp(8px, 1.7cqw, 10px);
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.caption span {
+  min-width: 0;
+}
+
+.caption span:first-child {
+  flex-shrink: 0;
+}
+
+.caption span:last-child {
+  overflow: hidden;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.coverBrand {
+  display: block;
+  font-family: var(--font-archia-bold), Arial, sans-serif;
+  font-size: 4.8cqw;
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.coverHeadline {
+  margin: 5.3cqw 0;
+  font-family: var(--font-archia-bold), Arial, sans-serif;
+  font-size: 6.4cqw;
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 1.1;
+}
+
+.coverHeadline em {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+.coverNote {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: clamp(7px, 1.55cqw, 11px);
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+}
+
+.nutrimind .artwork {
+  color: #161616;
+  background: #f4f4f4;
+}
+
+.nutriCopy {
+  position: absolute;
+  z-index: 1;
+  top: 11%;
+  left: 7%;
+  width: 46%;
+}
+
+.nutriCopy .coverBrand > span {
+  margin-left: 0.3cqw;
+}
+
+.nutriCopy .coverHeadline {
+  font-size: 5.65cqw;
+  line-height: 1.15;
+}
+
+.nutriCopy .coverNote {
+  max-width: 90%;
+  color: #626262;
+}
+
+.mealPhoto {
+  position: absolute;
+  top: 9%;
+  right: 5%;
+  bottom: 0;
+  width: 38%;
+  overflow: hidden;
+  border-radius: 50% 50% 0 0 / 34% 34% 0 0;
+  background: #ddd;
+}
+
+.mealPhoto img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.coffeePhoto {
+  object-fit: cover;
+  object-position: 64% center;
+}
+
+.kopimalas .artwork::after {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.42) 54%, rgba(0, 0, 0, 0.12));
+  content: "";
+}
+
+.coffeeCopy {
+  position: absolute;
+  z-index: 1;
+  top: 15%;
+  left: 7%;
+  width: 58%;
+}
+
+.coffeeCopy .coverHeadline {
+  margin-block: 5.5cqw 4.5cqw;
+  font-size: 7cqw;
+  line-height: 1.05;
+}
+
+.coffeeRule {
+  display: block;
+  width: 10cqw;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.qrattendance .artwork {
+  color: #fff;
+  background: #161616;
+}
+
+.qrCopy {
+  position: absolute;
+  z-index: 1;
+  top: 15%;
+  left: 7%;
+  width: 48%;
+}
+
+.qrHeadline {
+  margin: 5.5cqw 0 5cqw;
+  font-family: var(--font-archia-bold), Arial, sans-serif;
+  font-size: 9cqw;
+  font-weight: 700;
+  letter-spacing: -0.065em;
+  line-height: 0.98;
+}
+
+.qrScreen {
+  position: absolute;
+  top: 13%;
+  right: 6%;
+  bottom: -8%;
+  width: 35%;
+  overflow: hidden;
+  border: 1px solid #fff;
+  border-radius: 1.5cqw 1.5cqw 0 0;
+  background: #fff;
+  box-shadow: 0 2cqw 5cqw rgba(0, 0, 0, 0.35);
+  transition: transform 220ms ease;
+}
+
+.qrImage {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.streamflix .artwork {
+  background: #181818;
+}
+
+.mobileBrand {
+  position: absolute;
+  top: 8%;
+  left: 7%;
+}
+
+.mobileBrand > span {
+  display: block;
+  font-family: var(--font-archia-bold), Arial, sans-serif;
+  font-size: 4.8cqw;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.mobileBrand small {
+  display: block;
+  margin-top: 1.6cqw;
+  color: #a9a9a9;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: clamp(7px, 1.5cqw, 10px);
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+}
+
+.devices {
+  position: absolute;
+  right: 17%;
+  bottom: -5%;
+  left: 17%;
+  display: flex;
+  align-items: flex-end;
+  gap: 5%;
+  transition: transform 220ms ease;
+}
+
+.designScreen {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid #616161;
+  border-radius: 1.8cqw;
+  background: #000;
+  box-shadow: 0 2cqw 4cqw rgba(0, 0, 0, 0.22);
+}
+
+/* Crop positions are measured from the original interface design boards. */
+.designScreen .designImage {
+  position: absolute;
+  top: var(--crop-top);
+  left: var(--crop-left);
+  width: var(--crop-width);
+  max-width: none;
+  height: auto;
+  display: block;
+}
+
+.devices .designScreen {
+  width: 30%;
+}
+
+.deviceSide {
+  transform: translateY(3cqw);
+}
+
+.deviceCenter {
+  z-index: 1;
+}
+
+.gizitron .artwork {
+  color: #151515;
+  background: #efefef;
+}
+
+.giziCopy {
+  position: absolute;
+  top: 26%;
+  left: 7%;
+  width: 42%;
+}
+
+.giziCopy .coverBrand {
+  font-size: 5.2cqw;
+  letter-spacing: -0.025em;
+}
+
+.giziCopy p {
+  margin: 3cqw 0 4cqw;
+  font-size: 4.9cqw;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.giziCopy .coverNote {
+  color: #626262;
+}
+
+.giziDevices {
+  position: absolute;
+  top: 14%;
+  right: 6%;
+  display: flex;
+  width: 40%;
+  align-items: flex-start;
+  gap: 8%;
+  transition: transform 220ms ease;
+}
+
+.giziDevices .designScreen {
+  width: 46%;
+  border: 0;
+  border-radius: 3cqw;
+}
+
+.giziDevices .deviceSide {
+  transform: translateY(8cqw);
+}
+
+@media (hover: hover) {
+  :global(.work-card-main):hover .browser,
+  :global(.work-card-main):hover .qrScreen,
+  :global(.work-card-main):hover .devices,
+  :global(.work-card-main):hover .giziDevices {
+    transform: translateY(-2px);
+  }
+}
+
+@container (max-width: 360px) {
+  .caption span:last-child {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .browser,
+  .qrScreen,
+  .devices,
+  .giziDevices {
+    transition: none;
+  }
+}

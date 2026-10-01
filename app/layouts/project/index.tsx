@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ProjectCard from "@/app/components/ProjectCard";
 import projects from "@/public/api/project.json";
 
 export default function ProjectIndex() {
@@ -11,23 +12,7 @@ export default function ProjectIndex() {
         <p className="archive-intro">Websites, tools, and product ideas. Click through to see what went into each one.</p>
 
         <div className="archive-list">
-          {projects.map((project, index) => (
-            <article className="archive-project" key={project.slug}>
-              <Link href={`/project/${project.slug}`} className="archive-item">
-                <span className="archive-item-index">{String(index + 1).padStart(2, "0")}</span>
-                <span className="archive-item-copy">
-                  <strong>{project.title}</strong>
-                  <span>{project.summary}</span>
-                </span>
-                <span className="archive-item-arrow" aria-hidden="true">↗</span>
-              </Link>
-              {project.website && (
-                <a href={project.website} target="_blank" rel="noreferrer" className="archive-live-link">
-                  Visit live site <span aria-hidden="true">↗</span>
-                </a>
-              )}
-            </article>
-          ))}
+          {projects.map((project, index) => <ProjectCard project={project} index={index} headingLevel="h2" key={project.slug} />)}
         </div>
 
         <p className="archive-end">More experiments live on <Link href="https://github.com/calvinhaviandy?tab=repositories" target="_blank" rel="noreferrer">GitHub ↗</Link></p>

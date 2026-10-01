@@ -29,7 +29,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
         </div>
 
         <div className="detail-visual-wrap">
-          <ProjectVisual title={project.title} category={project.category} year={project.year} cover={project.cover} />
+          <ProjectVisual slug={project.slug} title={project.title} category={project.category} year={project.year} cover={project.cover} />
         </div>
 
         <div className="detail-body">
