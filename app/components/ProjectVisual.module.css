@@ -30,7 +30,6 @@
   border-radius: clamp(4px, 1cqw, 8px);
   background: #f5f5f5;
   box-shadow: 0 2.4cqw 5cqw rgba(0, 0, 0, 0.3);
-  transition: transform 220ms ease;
 }
 
 .browserBar {
@@ -262,7 +261,6 @@
   border-radius: 1.5cqw 1.5cqw 0 0;
   background: #fff;
   box-shadow: 0 2cqw 5cqw rgba(0, 0, 0, 0.35);
-  transition: transform 220ms ease;
 }
 
 .qrImage {
@@ -307,7 +305,6 @@
   display: flex;
   align-items: flex-end;
   gap: 5%;
-  transition: transform 220ms ease;
 }
 
 .designScreen {
@@ -379,7 +376,6 @@
   width: 40%;
   align-items: flex-start;
   gap: 8%;
-  transition: transform 220ms ease;
 }
 
 .giziDevices .designScreen {
@@ -392,26 +388,8 @@
   transform: translateY(8cqw);
 }
 
-@media (hover: hover) {
-  :global(.work-card-main):hover .browser,
-  :global(.work-card-main):hover .qrScreen,
-  :global(.work-card-main):hover .devices,
-  :global(.work-card-main):hover .giziDevices {
-    transform: translateY(-2px);
-  }
-}
-
 @container (max-width: 360px) {
   .caption span:last-child {
     display: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .browser,
-  .qrScreen,
-  .devices,
-  .giziDevices {
-    transition: none;
   }
 }

@@ -1,6 +1,8 @@
 import localFont from "next/font/local";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import SpaceBackdrop from "@/app/components/SpaceBackdrop";
+import MotionController from "@/app/components/MotionController";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
@@ -41,15 +43,13 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth">
+    <html lang="en">
       <body className={`${outfit.variable} ${archiaBold.variable}`}>
-        <div className="space-backdrop" aria-hidden="true">
-          <span className="shooting-star shooting-star-one" />
-          <span className="shooting-star shooting-star-two" />
-        </div>
+        <SpaceBackdrop />
         <Navbar />
         {children}
         <Footer />
+        <MotionController />
       </body>
     </html>
   );

@@ -47,7 +47,7 @@ export default function ProjectVisual({ slug, title, category, year, cover }: Pr
     <div className={`${styles.visual} ${styles[slug.replaceAll("-", "")] ?? ""}`} role="img" aria-label={`${title} — ${category}, ${year}; ${label.toLowerCase()}`}>
       <div className={styles.artwork} aria-hidden="true">
         {capture ? (
-          <div className={styles.browser}>
+          <div className={styles.browser} data-preview-lift>
             <div className={styles.browserBar}>
               <span className={styles.browserDots}><i /><i /><i /></span>
               <span className={styles.browserAddress}>{capture.address}</span>
@@ -78,12 +78,12 @@ export default function ProjectVisual({ slug, title, category, year, cover }: Pr
         ) : slug === "qr-attendance" ? (
           <>
             <div className={styles.qrCopy}><span className={styles.coverNote}>QR ATTENDANCE</span><p className={styles.qrHeadline}>Generate.<br />Scan.</p><span className={styles.coverNote}>QR CODE PROTOTYPE</span></div>
-            <div className={styles.qrScreen}><Image src="/image/project/thumbnails/qr-detail.jpg" alt="" fill sizes="(max-width: 620px) 200px, 350px" className={styles.qrImage} /></div>
+            <div className={styles.qrScreen} data-preview-lift><Image src="/image/project/thumbnails/qr-detail.jpg" alt="" fill sizes="(max-width: 620px) 200px, 350px" className={styles.qrImage} /></div>
           </>
         ) : slug === "streamflix" ? (
           <>
             <div className={styles.mobileBrand}><span>StreamFlix</span><small>INDEPENDENT FILM / PRODUCT DESIGN</small></div>
-            <div className={styles.devices}>
+            <div className={styles.devices} data-preview-lift>
               <DesignScreen image="streamflix/streamflix-photo.png" crop={[286, 62, 94, 206, 1271, 605]} className={styles.deviceSide} />
               <DesignScreen image="streamflix/streamflix-photo.png" crop={[392, 62, 94, 206, 1271, 605]} className={styles.deviceCenter} />
               <DesignScreen image="streamflix/streamflix-photo.png" crop={[497, 62, 95, 206, 1271, 605]} className={styles.deviceSide} />
@@ -92,7 +92,7 @@ export default function ProjectVisual({ slug, title, category, year, cover }: Pr
         ) : slug === "gizitron" ? (
           <>
             <div className={styles.giziCopy}><span className={styles.coverBrand}>GIZITRON</span><p>Your health.<br />Your journey.</p><span className={styles.coverNote}>NUTRITION / MOBILE UI</span></div>
-            <div className={styles.giziDevices}>
+            <div className={styles.giziDevices} data-preview-lift>
               <DesignScreen image="gizitron/gizitrons.png" crop={[724, 75, 137, 283, 1280, 720]} className={styles.deviceSide} />
               <DesignScreen image="gizitron/gizitrons.png" crop={[875, 2, 137, 291, 1280, 720]} className={styles.deviceCenter} />
             </div>
