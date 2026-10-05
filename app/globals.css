@@ -304,27 +304,59 @@ svg {
   place-items: center;
 }
 
-.orbit-path {
+.orbit-plane {
   position: absolute;
   inset: 0;
   border: 1px solid var(--line);
   border-radius: 50%;
+  pointer-events: none;
+  transition: border-color 220ms ease;
 }
 
-.orbit-path-one { transform: rotate(-27deg) scaleY(0.58); }
-.orbit-path-two { transform: rotate(63deg) scaleY(0.58); opacity: 0.55; }
+.orbit-plane-one { transform: rotate(-27deg) scaleY(0.58); }
+.orbit-plane-two { transform: rotate(63deg) scaleY(0.58); opacity: 0.55; }
+
+.orbit-rotor {
+  position: absolute;
+  inset: 0;
+  animation: portrait-revolve 26s linear infinite;
+  animation-delay: -6s;
+}
 
 .orbit-marker {
   position: absolute;
+  top: 50%;
+  left: 0;
   width: 5px;
   height: 5px;
   border-radius: 50%;
   background: var(--white);
   box-shadow: 0 0 12px var(--white);
+  transform: translate(-50%, -50%) scaleY(1.72414);
+  animation: portrait-counter-revolve 26s linear infinite;
+  animation-delay: -6s;
 }
 
-.orbit-marker-one { top: 66px; left: 12px; }
-.orbit-marker-two { right: 13px; bottom: 66px; width: 3px; height: 3px; }
+.orbit-marker-two { left: 100%; width: 3px; height: 3px; }
+.orbit-rotor-two,
+.orbit-marker-two { animation-duration: 34s; animation-direction: reverse; animation-delay: -14s; }
+
+@keyframes portrait-revolve {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Undo the rotor's rotation before counter-scaling the flattened orbit. */
+@keyframes portrait-counter-revolve {
+  from { transform: translate(-50%, -50%) rotate(0deg) scaleY(1.72414); }
+  to { transform: translate(-50%, -50%) rotate(-360deg) scaleY(1.72414); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .portrait-orbit:hover .orbit-rotor,
+  .portrait-orbit:hover .orbit-marker { animation-play-state: paused; }
+  .portrait-orbit:hover .orbit-plane { border-color: rgba(255, 255, 255, .55); }
+}
 
 .portrait-core {
   position: relative;
@@ -459,7 +491,7 @@ svg {
 .project-list, .archive-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .work-card { display: flex; min-width: 0; flex-direction: column; border: 1px solid var(--line); background: var(--black); transition: border-color 220ms ease; }
 .work-card:hover, .work-card:focus-within { border-color: rgba(255, 255, 255, .7); }
-.work-card-main { display: flex; flex: 1; min-width: 0; flex-direction: column; }
+.work-card-main { display: flex; flex: 1; min-width: 0; flex-direction: column; transition: transform 160ms ease; }
 .work-card-copy { flex: 1; padding: 18px 20px 20px; }
 .work-card-heading { display: grid; grid-template-columns: 22px minmax(0, 1fr) 20px; align-items: center; gap: 8px; }
 .work-card-index { color: var(--faint); font: 10px ui-monospace, SFMono-Regular, Consolas, monospace; }
@@ -471,6 +503,11 @@ svg {
 .work-card-external { display: flex; min-height: 44px; padding: 10px 20px; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; transition: background 180ms ease, color 180ms ease; }
 .work-card-external:hover, .work-card-external:focus-visible { background: var(--white); color: var(--black); }
 .work-card-external > span { font-size: 16px; }
+
+.link-card:active,
+.work-card-main:active { transform: scale(.985); }
+.link-card:active .link-card-arrow { transform: translate(4px, -4px); }
+.work-card-main:active .work-card-arrow { transform: translate(3px, -3px); }
 
 .archive-link {
   display: flex;
@@ -580,8 +617,6 @@ svg {
   .hero-meta { font-size: 9px; letter-spacing: .07em; }
   .portrait-orbit { width: 204px; height: 204px; margin-top: 32px; margin-bottom: 20px; }
   .portrait-core { width: 130px; height: 130px; }
-  .orbit-marker-one { top: 59px; left: 8px; }
-  .orbit-marker-two { right: 9px; bottom: 59px; }
   .hero h1 { font-size: clamp(59px, 13.9vw, 83px); }
   .hero-intro { margin-top: 18px; }
   .content-section { padding-top: 24px; padding-bottom: 34px; }
@@ -614,5 +649,11 @@ svg {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .shooting-star { display: none; }
+  .orbit-rotor,
+  .orbit-marker { animation: none !important; }
+  .link-card:active,
+  .work-card-main:active { transform: none; }
+  .link-card:active .link-card-arrow,
+  .work-card-main:active .work-card-arrow { transform: none; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }

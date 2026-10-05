@@ -22,10 +22,12 @@ export default function HomePage() {
         <div className="hero-meta"><span>PORTFOLIO / 2026</span><span>BASED IN INDONESIA</span></div>
 
         <div className="portrait-orbit" aria-hidden="true">
-          <span className="orbit-path orbit-path-one" />
-          <span className="orbit-path orbit-path-two" />
-          <span className="orbit-marker orbit-marker-one" />
-          <span className="orbit-marker orbit-marker-two" />
+          <span className="orbit-plane orbit-plane-one">
+            <span className="orbit-rotor orbit-rotor-one"><span className="orbit-marker orbit-marker-one" /></span>
+          </span>
+          <span className="orbit-plane orbit-plane-two">
+            <span className="orbit-rotor orbit-rotor-two"><span className="orbit-marker orbit-marker-two" /></span>
+          </span>
           <div className="portrait-core">
             <Image
               src="/image/profile/space-avatar.png"
