@@ -4,16 +4,17 @@ import Icon from "@/app/components/Icon";
 import ExperienceList from "@/app/components/ExperienceList";
 import SelectedWork from "@/app/components/SelectedWork";
 import experiences from "@/public/api/experience.json";
+import projects from "@/public/api/project.json";
 
-const primaryLinks = [
-  { label: "Explore my work", detail: "Projects, experiments, and product ideas", href: "#work", external: false },
-  { label: "GitHub", detail: "The code behind the work", href: "https://github.com/calvinhaviandy", external: true },
-  { label: "LinkedIn", detail: "Experience and a way to connect", href: "https://www.linkedin.com/in/calvinhaviandy/", external: true },
-  { label: "Instagram", detail: "A more personal corner of the internet", href: "https://www.instagram.com/calvinhaviandy/", external: true },
-  { label: "Email me", detail: "Have something in mind? Let's talk", href: "mailto:calvinhaviandy@gmail.com", external: false },
-];
+const socialLinks = [
+  { label: "GitHub", icon: "github", href: "https://github.com/calvinhaviandy", external: true },
+  { label: "LinkedIn", icon: "linkedin", href: "https://www.linkedin.com/in/calvinhaviandy/", external: true },
+  { label: "Instagram", icon: "instagram", href: "https://www.instagram.com/calvinhaviandy/", external: true },
+  { label: "Email", icon: "mail", href: "mailto:calvinhaviandy@gmail.com", external: false },
+] as const;
 
 const toolkit = ["TypeScript", "React", "Next.js", "Laravel", "Figma"];
+const featuredProjectCount = projects.filter((project) => project.featured).length;
 
 export default function HomePage() {
   return (
@@ -47,22 +48,41 @@ export default function HomePage() {
       </section>
 
       <section id="links" className="content-section links-section" aria-labelledby="links-title">
-        <div className="section-label"><span>01 / FIND ME</span><span>CHOOSE A DIRECTION <Icon name="arrow-down" /></span></div>
+        <div className="section-label"><span>01 / FIND ME</span></div>
         <h2 id="links-title" className="visually-hidden">Explore and connect</h2>
-        <div className="link-stack">
-          {primaryLinks.map((item, index) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              target={item.external ? "_blank" : undefined}
-              rel={item.external ? "noreferrer" : undefined}
-              className="link-card"
-            >
-              <span className="link-card-index">{String(index + 1).padStart(2, "0")}</span>
-              <span className="link-card-copy"><strong>{item.label}</strong><span>{item.detail}</span></span>
-              <span className="link-card-arrow" aria-hidden="true"><Icon name="arrow-up-right" /></span>
-            </Link>
-          ))}
+        <div className="links-panel">
+          <Link href="#work" className="link-card">
+            <span className="link-card-kicker">{String(featuredProjectCount).padStart(2, "0")} SELECTED PROJECTS</span>
+            <svg className="link-card-orbit" viewBox="0 0 160 160" width="160" height="160" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true" focusable="false">
+              <ellipse cx="80" cy="80" rx="68" ry="27" transform="rotate(-28 80 80)" />
+              <ellipse cx="80" cy="80" rx="68" ry="27" transform="rotate(62 80 80)" />
+              <circle cx="80" cy="80" r="16" />
+              <circle cx="139" cy="48" r="3" fill="currentColor" stroke="none" />
+              <circle cx="48" cy="21" r="2" fill="currentColor" stroke="none" />
+              <path d="M80 72v16M72 80h16" />
+            </svg>
+            <div className="link-card-content">
+              <strong className="link-card-title">Explore<br />my work.</strong>
+              <p className="link-card-note">Websites, apps &amp; interfaces.</p>
+            </div>
+            <span className="link-card-arrow" aria-hidden="true"><Icon name="arrow-up-right" /></span>
+          </Link>
+          <ul className="social-links">
+            {socialLinks.map((item) => (
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
+                  className="social-link"
+                >
+                  <span className="social-link-icon" aria-hidden="true"><Icon name={item.icon} /></span>
+                  <span className="social-link-arrow" aria-hidden="true"><Icon name="arrow-up-right" /></span>
+                  <strong className="social-link-label">{item.label}</strong>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

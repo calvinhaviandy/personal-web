@@ -16,10 +16,6 @@
   background: #111;
 }
 
-.artwork img {
-  filter: grayscale(1);
-}
-
 .browser {
   position: absolute;
   inset: 6.5% 5.5%;

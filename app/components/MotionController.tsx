@@ -16,6 +16,7 @@ type Interaction = {
   press?: boolean;
   focusWithin?: boolean;
   arrowDistance?: number;
+  orbit?: SVGSVGElement | null;
 };
 
 // Only motion is client-side; the portfolio content remains server-rendered.
@@ -54,6 +55,7 @@ export default function MotionController() {
           const arrowDistance = (options.arrowDistance ?? 3) + (pressed ? 1 : 0);
           if (options.arrow) tween(options.arrow, { x: !reduce && active ? arrowDistance : 0, y: !reduce && active ? -arrowDistance : 0 });
           if (options.preview) tween(options.preview, { y: !reduce && active ? -2 : 0 });
+          if (options.orbit) tween(options.orbit, { rotation: !reduce && active ? 12 : 0, transformOrigin: "50% 50%" });
         };
         if (canHover) {
           listen(element, "pointerenter", () => { hovered = true; update(); });
@@ -87,13 +89,13 @@ export default function MotionController() {
       };
 
       select(".link-card").forEach((card) => {
-        const index = card.querySelector<HTMLElement>(".link-card-index");
-        const copy = card.querySelector<HTMLElement>(".link-card-copy > span");
-        const paints: Paint[] = [{ target: card, rest: { backgroundColor: "#000", color: "#fff" }, active: { backgroundColor: "#fff", color: "#000" } }];
-        if (index) paints.push({ target: index, rest: { color: "rgba(255,255,255,.48)" }, active: { color: "rgba(0,0,0,.58)" } });
-        if (copy) paints.push({ target: copy, rest: { color: "rgba(255,255,255,.66)" }, active: { color: "rgba(0,0,0,.7)" } });
-        bind(card, { paints, arrow: card.querySelector<HTMLElement>(".link-card-arrow"), lift: true, press: true });
+        const paints: Paint[] = [{ target: card, rest: { backgroundColor: "#fff", color: "#000" }, active: { backgroundColor: "#000", color: "#fff" } }];
+        bind(card, { paints, arrow: card.querySelector<HTMLElement>(".link-card-arrow"), orbit: card.querySelector<SVGSVGElement>(".link-card-orbit"), lift: true, press: true });
       });
+      select(".social-link").forEach((link) => bind(link, {
+        paints: [{ target: link, rest: { backgroundColor: "#000", color: "#fff", borderColor: "rgba(255,255,255,.26)" }, active: { backgroundColor: "#fff", color: "#000", borderColor: "#fff" } }],
+        arrow: link.querySelector<HTMLElement>(".social-link-arrow"), arrowDistance: 2, press: true,
+      }));
 
       select(".work-card").forEach((card) => bind(card, {
         focusWithin: true,

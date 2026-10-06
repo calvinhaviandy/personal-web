@@ -1,6 +1,6 @@
 # Project thumbnail sources
 
-The website renders these assets in code-native monochrome compositions. Covers are labelled separately from interface captures; no live iframes or screenshot APIs are used at runtime.
+The website renders these assets in code-native compositions, preserving their original image colors within the monochrome portfolio. Covers are labelled separately from interface captures; no live iframes or screenshot APIs are used at runtime.
 
 - `vallerieon.jpg`: public gallery viewport captured from https://vallerieon.vercel.app on 2026-10-01.
 - `melodytix.jpg`: current public homepage viewport captured from https://melodytix.vercel.app on 2026-10-01. Replaces the old PHP-era image in the visible preview.

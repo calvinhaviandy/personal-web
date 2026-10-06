@@ -1,6 +1,6 @@
 # Calvin Haviandy — Portfolio
 
-A monochrome, space-inspired portfolio with a link-first home page and project detail pages. Built with Next.js App Router, React, TypeScript, CSS, and GSAP.
+A monochrome, space-inspired portfolio with full-color project imagery, a link-first home page, and project detail pages. Built with Next.js App Router, React, TypeScript, CSS, and GSAP.
 
 ## Run locally
 
