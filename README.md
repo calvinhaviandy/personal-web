@@ -30,6 +30,8 @@ npm run build
 
 Project images live in `public/image/project/`. The project pages show a monochrome typographic cover when a project has no image.
 
+Portfolio typography uses locally hosted IBM Plex Sans in regular and medium weights. Project-cover lettering keeps its original fonts. Font sources and the IBM license are in `public/fonts/ibm-plex/`.
+
 ## Motion
 
 GSAP owns animated transforms and color changes; CSS keeps layout, decoration, and no-JavaScript interaction fallbacks. Pages remain server-rendered and visible before hydration. Motion respects `prefers-reduced-motion`, pauses continuous loops in hidden tabs, and pauses the avatar orbit when offscreen. Route and media-query changes clean up animation contexts and event listeners.

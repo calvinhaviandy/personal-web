@@ -6,14 +6,30 @@ import MotionController from "@/app/components/MotionController";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+const plexSans = localFont({
+  src: [
+    { path: "../public/fonts/ibm-plex/IBMPlexSans-Regular-Latin1.woff2", weight: "400", style: "normal" },
+    { path: "../public/fonts/ibm-plex/IBMPlexSans-Medium-Latin1.woff2", weight: "500", style: "normal" },
+  ],
+  variable: "--font-plex-sans",
+  display: "swap",
+});
+
+// Keep each project's cover lettering independent of the portfolio typography.
 const outfit = localFont({
-  src: "../public/fonts/Outfit-Regular.ttf",
+  src: "../public/fonts/Outfit-Regular.woff2",
   variable: "--font-outfit",
+  weight: "400",
+  display: "swap",
+  preload: false,
 });
 
 const archiaBold = localFont({
   src: "../public/fonts/archia-bold-webfont.woff2",
   variable: "--font-archia-bold",
+  weight: "700",
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -44,7 +60,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${outfit.variable} ${archiaBold.variable}`}>
+      <body className={`${plexSans.variable} ${outfit.variable} ${archiaBold.variable}`}>
         <SpaceBackdrop />
         <Navbar />
         {children}
