@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependensi
-RUN npm install
+RUN npm ci
 
 # Salin seluruh file proyek ke dalam container
 COPY . .

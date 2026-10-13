@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "format": "prettier --write app public/api README.md package.json tsconfig.json \"*.mjs\" .prettierrc.json",
+    "format:check": "prettier --check app public/api README.md package.json tsconfig.json \"*.mjs\" .prettierrc.json"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -21,6 +23,7 @@
     "@types/react-dom": "^19.3.0",
     "eslint": "^9.0.0",
     "eslint-config-next": "16.3.7",
+    "prettier": "3.9.10",
     "typescript": "^5"
   }
 }

@@ -63,11 +63,7 @@ export default function SpaceBackdrop() {
           ),
         ];
 
-        const createShootingStar = (
-          star: HTMLSpanElement,
-          period: number,
-          initialTime: number,
-        ) => {
+        const createShootingStar = (star: HTMLSpanElement, period: number, initialTime: number) => {
           const timeline = gsap.timeline({ repeat: -1, repeatRefresh: true });
 
           timeline
@@ -147,14 +143,8 @@ export default function SpaceBackdrop() {
     <div className="space-backdrop" aria-hidden="true" ref={backdropRef}>
       <span className="star-layer star-layer-far" ref={farRef} />
       <span className="star-layer star-layer-near" ref={nearRef} />
-      <span
-        className="shooting-star shooting-star-one"
-        ref={firstShootingStarRef}
-      />
-      <span
-        className="shooting-star shooting-star-two"
-        ref={secondShootingStarRef}
-      />
+      <span className="shooting-star shooting-star-one" ref={firstShootingStarRef} />
+      <span className="shooting-star shooting-star-two" ref={secondShootingStarRef} />
     </div>
   );
 }

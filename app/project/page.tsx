@@ -1,5 +1,43 @@
-import ProjectIndex from "@/app/layouts/project";
+import Link from "next/link";
+import Icon from "@/app/components/Icon";
+import ProjectCard from "@/app/components/ProjectCard";
+import { projects } from "@/app/data/projects";
 
 export default function ProjectsPage() {
-  return <ProjectIndex />;
+  return (
+    <main className="archive-page" id="top">
+      <div className="archive-content">
+        <Link href="/#work" className="back-link">
+          <Icon name="arrow-left" /> Back to home
+        </Link>
+        <div className="section-label archive-meta">
+          <span>ALL PROJECTS</span>
+          <span>{String(projects.length).padStart(2, "0")} ENTRIES</span>
+        </div>
+        <h1 className="archive-heading">
+          The work<span className="title-period">.</span>
+        </h1>
+        <p className="archive-intro">
+          Websites, tools, and product ideas. Click through to see what went into each one.
+        </p>
+
+        <div className="archive-list">
+          {projects.map((project, index) => (
+            <ProjectCard project={project} index={index} headingLevel="h2" key={project.slug} />
+          ))}
+        </div>
+
+        <p className="archive-end">
+          More experiments live on{" "}
+          <Link
+            href="https://github.com/calvinhaviandy?tab=repositories"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub <Icon name="arrow-up-right" />
+          </Link>
+        </p>
+      </div>
+    </main>
+  );
 }

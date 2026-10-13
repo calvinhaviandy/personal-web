@@ -200,7 +200,12 @@
   position: absolute;
   z-index: 0;
   inset: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.42) 54%, rgba(0, 0, 0, 0.12));
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.84),
+    rgba(0, 0, 0, 0.42) 54%,
+    rgba(0, 0, 0, 0.12)
+  );
   content: "";
 }
 

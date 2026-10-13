@@ -8,8 +8,16 @@ import "./globals.css";
 
 const plexSans = localFont({
   src: [
-    { path: "../public/fonts/ibm-plex/IBMPlexSans-Regular-Latin1.woff2", weight: "400", style: "normal" },
-    { path: "../public/fonts/ibm-plex/IBMPlexSans-Medium-Latin1.woff2", weight: "500", style: "normal" },
+    {
+      path: "../public/fonts/ibm-plex/IBMPlexSans-Regular-Latin1.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/ibm-plex/IBMPlexSans-Medium-Latin1.woff2",
+      weight: "500",
+      style: "normal",
+    },
   ],
   variable: "--font-plex-sans",
   display: "swap",

@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+coverage/
+.vercel/
+package-lock.json
+next-env.d.ts
+AGENTS.md
+CLAUDE.md
+public/fonts/
+public/image/
